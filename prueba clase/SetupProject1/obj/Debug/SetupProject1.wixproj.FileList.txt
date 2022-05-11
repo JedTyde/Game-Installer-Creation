@@ -6,3 +6,6 @@ obj\Debug\SetupProject1.wixproj.BindContentsFileListnull.txt
 obj\Debug\SetupProject1.wixproj.BindOutputsFileListnull.txt
 obj\Debug\SetupProject1.wixproj.BindBuiltOutputsFileListnull.txt
 obj\Debug\HeatGeneratedFileList.wixobj
+C:\Users\PC\Documents\GitHub\Game-Installer-Creation\prueba clase\SetupProject1\bin\Debug\cab1.cab
+C:\Users\PC\Documents\GitHub\Game-Installer-Creation\prueba clase\SetupProject1\bin\Debug\SetupProject1.msi
+C:\Users\PC\Documents\GitHub\Game-Installer-Creation\prueba clase\SetupProject1\bin\Debug\SetupProject1.wixpdb

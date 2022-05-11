@@ -1,3 +1,3 @@
-F:\UPC\ANNO2\quatri2\proyect\prueba clase\SetupProject1\bin\Debug\cab1.cab
-F:\UPC\ANNO2\quatri2\proyect\prueba clase\SetupProject1\bin\Debug\SetupProject1.msi
-F:\UPC\ANNO2\quatri2\proyect\prueba clase\SetupProject1\bin\Debug\SetupProject1.wixpdb
+C:\Users\PC\Documents\GitHub\Game-Installer-Creation\prueba clase\SetupProject1\bin\Debug\cab1.cab
+C:\Users\PC\Documents\GitHub\Game-Installer-Creation\prueba clase\SetupProject1\bin\Debug\SetupProject1.msi
+C:\Users\PC\Documents\GitHub\Game-Installer-Creation\prueba clase\SetupProject1\bin\Debug\SetupProject1.wixpdb
