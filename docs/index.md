@@ -40,7 +40,76 @@ Is done in the absence of any interfering elements such as old versions of the c
 
 Network installation, is an installation of a program from a shared network resource that may be done by installing a minimal system before proceeding to download further packages over the network. This may simply be a copy of the original media but software publishers which offer site licenses for institutional customers may provide a version intended for installation over a network.
 
+### Packaging
 
+Packaging is the creation of an executable (or file used by a service) that contains the files, registry and logic to install an application onto a device.
+This packages must be prepared and meet the installation requirements for an specific environment.
+
+There are different packaging format, like:
+- **Microsoft Windows Installer**: Setup.msi
+- **Legacy executables**: Setup.exe
+- **Windows store**: appx
+- **Batch files**: Install.vbs/bat
+- **Loose Files / Raw Files**
+- **.dll / .xla /.xlam / .ppam / .dotm, etc…**
+
+### Advantages of packaging
+
+What are the benefits of packaging?
+
+- Simple installation, and simplicity in working with simple files.
+- It is more ergonomic and easy to use.
+- It provides an upgrade and patch features for new versions, as well as uninstalling and cleaning the system when removing the software.
+- It has the digital certification of the application.
+- Prevents piracy.
+
+### Microsoft Windows Installer
+
+Microsoft now provides the Microsoft® Windows® Installer (MSI) service as part of its desktop operating systems. It resides on workstations and controls installing, uninstalling, patching, and repairing of software.
+
+The MSI Packaged Installation usually takes place in two phases: Acquisition & Execution.
+
+The acquisition is divided into two phases, the first phase collects the information from the user and the second phase acquires the information from the MSI database. 
+
+When the required information is collected from the user and the database, the MSI executes the Installation script and kicks off the installation of components. 
+
+![image](https://user-images.githubusercontent.com/59925703/167963932-9dfde400-41b9-4ee4-9dec-814f46a404c5.png)
+
+### Installer tools
+
+There are several types of installer tools that can be used with a full functionality, for example:
+
+-InstallShield: 
+
+Good  management, localization and automation features. Best for complex products. It also has a well-integrated GUI. Best for small development teams.
+
+![image](https://user-images.githubusercontent.com/59925703/167965671-1ad070ad-88ca-4d01-b9e7-a7d57877b95d.png)
+
+-Advanced Installer: 
+
+A lot of features. Compiles all kinds of setups and supports all new technologies. Support for App-V. Best for corporate teams.
+
+![image](https://user-images.githubusercontent.com/59925703/167965634-998b0922-bb8b-4bd7-8b06-862d5ebaee5d.png)
+
+-NSIS: 
+
+Small and fast package bundler, one of the best installers with compression methods and fully customizable, from interfaces to wizards.Compatible with all Windows versions. Mainly script based and supports plug-ins.
+
+![image](https://user-images.githubusercontent.com/59925703/167965608-98ce9d73-7fb8-4153-a109-40fd6d0612af.png)
+
+-Inno Setup: 
+
+Lot of features and fully customizable. Inno also supports digital signing and uses 7-zip LZMA/LZMA2 file compression. Mainly script based.
+
+![image](https://user-images.githubusercontent.com/59925703/167965567-70b3c9df-e48a-48e7-8e50-8c9994698abe.png)
+
+-WiX: 
+
+Text source files. It has unnecessary to store the source as a binary. This helps a lot when working in different branches, versions, and merging. It has full integration in Visual Studio.
+
+![image](https://user-images.githubusercontent.com/59925703/167965520-552b63ed-0d3f-4e22-9e14-6e71262beddc.png)
+
+### WIX
 ```markdown
 Syntax highlighted code block
 
