@@ -1,0 +1,8 @@
+F:\UPC\ANNO2\quatri2\proyect\prueba clase\SetupProject1\bin\Debug\cab1.cab
+F:\UPC\ANNO2\quatri2\proyect\prueba clase\SetupProject1\bin\Debug\SetupProject1.msi
+F:\UPC\ANNO2\quatri2\proyect\prueba clase\SetupProject1\bin\Debug\SetupProject1.wixpdb
+obj\Debug\Product.wixobj
+obj\Debug\SetupProject1.wixproj.BindContentsFileListnull.txt
+obj\Debug\SetupProject1.wixproj.BindOutputsFileListnull.txt
+obj\Debug\SetupProject1.wixproj.BindBuiltOutputsFileListnull.txt
+obj\Debug\HeatGeneratedFileList.wixobj
