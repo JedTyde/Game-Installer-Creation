@@ -10,11 +10,11 @@ You can find information about Installer & Setup Projects in my website.
 
 ## Tools used
 
-https://wixtoolset.org/
+[Wix](https://wixtoolset.org/)
 
-https://github.com/tom-englert/Wax/releases/tag/v1.7
+[Wax](https://github.com/tom-englert/Wax/releases/tag/v1.7)
 
-https://www.virtualbox.org/wiki/Downloads
+[Virtualbox](https://www.virtualbox.org/wiki/Downloads)
 
 SDL
 
@@ -22,3 +22,4 @@ Visual studio
 
 ## Author
 
+Jose Antonio Atencia- GitHub account: [JedTyde](https://github.com/JedTyde)
