@@ -275,7 +275,7 @@ On windows search the development  command prompt. Change to the directory that 
 
 signtool sign /a /fd SHA256 SetupProject1.msi
 
-###Testing the installer in a virtual machine
+### Testing the installer in a virtual machine
 
 Virtual machines are a good tool for texting things in other devices, in the comfort of using only one device.
 
@@ -283,7 +283,7 @@ Virtual machines are a good tool for texting things in other devices, in the com
 
 After setting up the virtual machine, putting the ram, and location, we can drag the executable to the virtual machine and try it.
 
-###Links and References
+### Links and References
 
 https://github.com/wixtoolset
 
