@@ -192,31 +192,121 @@ Now we have a shortcut, but we need also de desktop shortcut. With this ut will 
 ```markdown
 <Directory Id="DesktopFolder" Name="My UPC App" />
 ```
+### Customize Icon
+
+The game has no icon, but we can put an .ico to change what we see.
+
+Create a new folder called assets and put the icon inside.
+
+REMEMBER, the icon has to be a .ico, preferably 256x256 pixels.
+
+![img](https://raw.githubusercontent.com/JedTyde/Game-Installer-Creation/main/images/2.png)
+
+Then, integrate this code:
 
 ```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+          <Icon Id="icon.ico" SourceFile="assets\MyIcon.ico" />
+    <Property Id="ARPPRODUCTICON" Value="icon.ico" />
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+```markdown
+	Icon = "icon.ico"/>
+```
 
-### Jekyll Themes
+### Implementing UIDialogs
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/JedTyde/Game-Installer-Creation/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+The installation is still a silent installation. So we are going to make an user agreement and an attended installation.
+Go to your wix project and add the WixUIExtension from wix folder:
+C:\Program Files (x86)\WiX Toolset v3.11\bin
 
-### Support or Contact
+![img](https://raw.githubusercontent.com/JedTyde/Game-Installer-Creation/main/images/3.png)
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+After that create 2 bmp that will be the background, one 493x312, the other 493x58, and a rtf file with the license or message you want to put in.
+and put this code:
+
+```markdown
+	<!-- Todo 5 -->
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+    <UIRef Id="WixUI_InstallDir" />
+    <!-- Todo 5 -->
+    <WixVariable Id="WixUIBannerBmp" Value="assets\TopBanner.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="assets\BackgroundBanner.bmp" />
+    <!-- Todo 5 -->
+    <WixVariable Id="WixUILicenseRtf" Value="assets\MyLicense.rtf" />
+```
+![img](https://raw.githubusercontent.com/JedTyde/Game-Installer-Creation/main/images/2.png)
+
+### Link dll
+
+```markdown
+<ComponentGroupRef Id="HeatGenerated" />
+```
+Create an installer file and put HeatGeneratedFileList as the name.
+This will harvest and include all our assets and dll files.
+But we will need to put them manually,
+
+![img](https://raw.githubusercontent.com/JedTyde/Game-Installer-Creation/main/images/4.png)
+
+![img](https://raw.githubusercontent.com/JedTyde/Game-Installer-Creation/main/images/5.png)
+
+We also have to add this in the installer.wixproj
+
+```markdown
+<Target Name="BeforeBuild">
+  <HeatDirectory Directory="..\Output" 
+    PreprocessorVariable="var.HarvestPath" 
+    OutputFile="File1.wxs"
+    ComponentGroupName="HeatGenerated" 
+    DirectoryRefId="INSTALLFOLDER" 
+    AutogenerateGuids="true" 
+    ToolPath="$(WixToolPath)" 
+    SuppressFragments="true" 
+    SuppressRegistry="true" 
+    SuppressRootDirectory="true" />  
+</Target>
+```
+
+### Signing
+
+Digital signing is a tool created using a public-key signature algorithm such as the RSA public-key cipher. The key uses 2 types of key: the public key and the private key.
+
+The tool is installed with Microsoft Windows Software Development Kit (SDK) installation path.
+On windows search the development  command prompt. Change to the directory that contains the .msi file and sign it by using the following command: 
+
+signtool sign /a /fd SHA256 SetupProject1.msi
+
+###Testing the installer in a virtual machine
+
+Virtual machines are a good tool for texting things in other devices, in the comfort of using only one device.
+
+[.iso files](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/)
+
+After setting up the virtual machine, putting the ram, and location, we can drag the executable to the virtual machine and try it.
+
+###Links and References
+
+https://github.com/wixtoolset
+
+https://wixtoolset.org/documentation/manual/v3/howtos/files_and_registry/add_a_file.html
+
+https://wixtoolset.org/documentation/manual/v3/
+
+https://wixtoolset.org/documentation/manual/v3/msbuild/target_reference/harvestdirectory.html
+
+https://en.wikipedia.org/wiki/Installation_(computer_programs)
+
+https://en.wikipedia.org/wiki/Windows_Installer
+
+https://www.virtualbox.org/wiki/Downloads
+
+https://www.add-in-express.com/docs/wix-setup-package.php
+
+https://www.add-in-express.com/docs/wix-web-setup-project.php
+
+https://wixtoolset.org/documentation/manual/v3/votive/authoring_first_votive_project.html
+
+https://www.technical-recipes.com/2017/using-the-wix-toolset-to-create-installers-in-visual-studio-c-projects/
+
+https://riptutorial.com/wix
+
+https://www.exemsi.com/documentation/sign-your-msi/#:~:text=A%20digital%20signature%20will%20enable,other%20users%20outside%20your%20organization.
