@@ -110,6 +110,89 @@ Text source files. It has unnecessary to store the source as a binary. This help
 ![image](https://user-images.githubusercontent.com/59925703/167965520-552b63ed-0d3f-4e22-9e14-6e71262beddc.png)
 
 ### WIX
+
+Why choosing Wix?
+You can create a binary MSI file from a regular text file. MSI binary is “compiled” from WiX text XML files. It has good stability and a full integration in Visual Studio. 
+
+It’s free & Open Source. 
+
+### Setting up Wix
+
+To use Wix in the best way possible, we need to download a couple of things.
+
+[Wix](https://github.com/wixtoolset/wix3/releases/tag/wix3112rtm)
+
+[Wix visual studio extension](https://wixtoolset.org/releases/)
+
+[Wax](https://github.com/tom-englert/Wax/releases/tag/v1.7)
+
+By creating a new project the type needs to be the following: “Setup Project for WiX v3”.
+
+This will create a generic script file product.wxs that will be the container of the components of our installer (all files including assets and .exe of the application) and the project file itself .wixproj, this last one contains properties for the creation of the installer.
+
+Whe can do it in two forms:
+
+with wax we have to go to Tools->Wix-setup-editor and fill the gaps there.
+
+![image](https://raw.githubusercontent.com/JedTyde/Game-Installer-Creation/main/images/1.png)
+
+Or doing it manually by putting
+```markdown
+<Component Id="Game.exe" Guid="48b7b907-12d6-4e82-a8f5-e92156e0c0c8">
+	<File Id="Game.exe" Source="..\Build\Release\Game.exe" KeyPath="yes"
+	Checksum="yes" />
+</Component>
+```
+
+### Shortcut
+
+In order to search the game in windows we have to create a shortcut. By puttiing some code in Product.wxs we can do it.
+
+```markdown
+<ComponentRef Id="StartMenuShortcut" />
+```
+
+```markdown
+<Fragment>
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="StartMenuShortcut" Guid="ea2fc581-b635-4278-a8f1-1a81320d803a">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+               Name="MyInstaller"
+               Description="My UPC Game Description"
+               Target="[#Game.exe]"
+               WorkingDirectory="INSTALLFOLDER"/>
+        <RemoveFolder Id="RemoveProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\MyCompany\MyApplicationName" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+```
+
+```markdown
+<Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="MyInstaller"/>
+      </Directory>
+```
+
+Now we have a shortcut, but we need also de desktop shortcut. With this ut will create a direct access in the desktop.
+
+```markdown
+<DirectoryRef Id="DesktopFolder">
+      <Component Id="DesktopShortcut" Guid="c0f4eeec-8988-4c58-8a0a-2ebac04e2a2a">
+        <Shortcut Id="ApplicationDesktopShortcut"
+               Name="MyInstaller"
+               Description="My UPC Game Description"
+               Target="[#Game.exe]"
+               WorkingDirectory="INSTALLFOLDER"/>
+        <RemoveFolder Id="RemoveDesktopFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\MyCompany\MyApplicationName" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+```
+
+```markdown
+<Directory Id="DesktopFolder" Name="My UPC App" />
+```
+
 ```markdown
 Syntax highlighted code block
 
